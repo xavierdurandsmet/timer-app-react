@@ -22,9 +22,13 @@ const CountDown = React.createClass({
                     });
                 case 'paused':
                     clearInterval(this.timer);
-                    this.timer = undefined;  
+                    this.timer = undefined;
             }
         }
+    },
+    componentWillUnmount() {
+        clearInterval(this.timer);
+        this.timer = undefined;
     },
     startTimer() {
         this.timer = setInterval(() => {
@@ -32,7 +36,11 @@ const CountDown = React.createClass({
             this.setState({
                 count: newCount >= 0 ? newCount : 0
             })
-
+            if (newCount === 0) {
+                this.setState({
+                    countDownStatus: 'stopped'
+                })
+            }
         }, 1000)
     },
     handleSetCountDown(seconds) {
@@ -49,7 +57,7 @@ const CountDown = React.createClass({
     render() {
         const {count, countDownStatus} = this.state;
         const renderControlArea = () => {
-            if (countDownStatus !== 'stopped' && count !== 0) {
+            if (countDownStatus !== 'stopped') {
                 return <Controls countDownStatus={countDownStatus} onStatusChange={this.handleStatusChange} />
             } else {
                 return <CountDownForm onSetCountDown={this.handleSetCountDown} />
