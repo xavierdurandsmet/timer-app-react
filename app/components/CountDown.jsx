@@ -2,6 +2,7 @@ import React from 'react';
 import Clock from 'Clock';
 import CountDownForm from 'CountDownForm';
 import Controls from 'Controls';
+import TodoAPI from 'TodoAPI';
 
 const CountDown = React.createClass({
     getInitialState() {
@@ -26,6 +27,23 @@ const CountDown = React.createClass({
             }
         }
     },
+
+    // when countDown already loaded, switching from one countDown to another
+    componentWillReceiveProps(nextProps) {
+        const countDownId = nextProps.location.query.id;
+        this.setState({
+            ...TodoAPI.mainState.countdowns[countDownId]
+        })
+    },
+
+    // first time a countDown is mounted
+    componentWillMount() {
+        const countDownId = this.props.location.query.id;
+        this.setState({
+            ...TodoAPI.mainState.countdowns[countDownId]
+        })
+    },
+
     componentWillUnmount() {
         clearInterval(this.timer);
         this.timer = undefined;
@@ -55,6 +73,7 @@ const CountDown = React.createClass({
         })
     },
     render() {
+        const id = this.props.location.query.id;
         const {count, countDownStatus} = this.state;
         const renderControlArea = () => {
             if (countDownStatus !== 'stopped') {
@@ -65,6 +84,7 @@ const CountDown = React.createClass({
         }
         return (
             <div>
+                <h1>{this.state.title}</h1>
                 <Clock totalSeconds={count} />
                 {renderControlArea()}
             </div>

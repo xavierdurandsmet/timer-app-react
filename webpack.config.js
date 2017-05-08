@@ -30,6 +30,7 @@ module.exports = {
       CountDownForm: 'app/components/CountDownForm.jsx',
       Clock: 'app/components/Clock.jsx',
       Controls: 'app/components/Controls.jsx',
+      TodoAPI: 'app/api/TodoAPI.jsx',
       applicationStyles: 'app/styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']

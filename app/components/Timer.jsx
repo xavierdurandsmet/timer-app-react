@@ -1,6 +1,7 @@
 import React from 'react';
 import Clock from 'Clock';
 import Controls from 'Controls';
+// import axios from 'axios';
 
 const Timer = React.createClass({
     getInitialState() {
@@ -14,6 +15,10 @@ const Timer = React.createClass({
             countDownStatus: newStatus
         })
     },
+    // componentDidMount() {
+    //     axios.get('/timer')
+    //         .then(res => this.setState({count: res.data.count}));
+    // },
     componentDidUpdate(prevProps, prevState) {
         if (this.state.countDownStatus !== prevState.countDownStatus) {
             switch (this.state.countDownStatus) {
@@ -37,7 +42,7 @@ const Timer = React.createClass({
     startTimer() {
         this.timer = setInterval(() => {
             const newCount = this.state.count + 1;
-            this.setState({count: newCount})
+            this.setState({ count: newCount })
         }, 1000)
     },
     render() {
