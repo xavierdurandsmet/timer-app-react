@@ -22,14 +22,12 @@ module.exports = {
   },
   resolve: {
     root: __dirname,
+    modulesDirectories: [
+      'node_modules',
+      './app/components',
+      './app/api'
+    ],
     alias: {
-      Main: 'app/components/Main.jsx',
-      Nav: 'app/components/Nav.jsx',
-      Timer: 'app/components/Timer.jsx',
-      CountDown: 'app/components/CountDown.jsx',
-      CountDownForm: 'app/components/CountDownForm.jsx',
-      Clock: 'app/components/Clock.jsx',
-      Controls: 'app/components/Controls.jsx',
       TodoAPI: 'app/api/TodoAPI.jsx',
       applicationStyles: 'app/styles/app.scss'
     },
