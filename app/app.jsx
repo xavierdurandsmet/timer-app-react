@@ -5,6 +5,7 @@ var Main = require('Main');
 var Timer = require('Timer');
 var CountDown = require('CountDown');
 import Tweets from 'Tweets';
+import Authenticate from 'Authenticate';
 
 // Load foundation
 $(document).foundation();
@@ -14,7 +15,8 @@ require('style!css!sass!applicationStyles')
 
 ReactDOM.render(
   <Router history={hashHistory}>
-    <Route path="/" component={Main}>
+    <Route path="/" component={Authenticate} />
+    <Route path="/dashboard" component={Main}>
       <Route path="countdown" component={CountDown} />
       <Route path="tweets" component={Tweets} />
       <IndexRoute component={Timer} />

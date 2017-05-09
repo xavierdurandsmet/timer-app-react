@@ -21,7 +21,7 @@ const Nav = React.createClass({
     render() {
         const countdownsList = () => {
             return this.state.countdowns.map((countdown, index) => {
-                const path = `/countdown/?id=${countdown.id}`;
+                const path = `/dashboard/countdown/?id=${countdown.id}`;
                 return <li key={index}><Link to={path} activeClassName="active-link">{countdown.title}</Link></li>
             })
         } 
@@ -30,8 +30,8 @@ const Nav = React.createClass({
                 <div className="top-bar-left">
                     <ul className="dropdown menu" data-dropdown-menu>
                         <li className="menu-text">React Timer App</li>
-                        <li><Link to="/tweets" activeClassName="active-link">Tweets</Link></li>
-                        <li><IndexLink to="/" activeClassName="active-link">Timer</IndexLink></li>
+                        <li><Link to="/dashboard/tweets" activeClassName="active-link">Tweets</Link></li>
+                        <li><IndexLink to="/dashboard/" activeClassName="active-link">Timer</IndexLink></li>
                         {countdownsList()}
                         <li className="menu-text"> <button onClick={this.handleAddNewProject}>Add New Project</button></li>
                     </ul>

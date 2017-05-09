@@ -2,24 +2,6 @@ var React = require('react');
 import Nav from 'Nav';
 
 const Main = React.createClass({
-  // getInitialState() {
-  //   return {
-  //     countdowns: [
-  //       {
-  //         title: 'countdowns 0',
-  //         id: '0'
-  //       },
-  //       {
-  //         title: 'countdowns 1',
-  //         id: '1'
-  //       },
-  //       {
-  //         title: 'countdowns 2',
-  //         id: '2'
-  //       }
-  //     ]
-  //   }
-  // },
   render () {
     return (
       <div >
